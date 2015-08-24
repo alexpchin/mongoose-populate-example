@@ -1,0 +1,27 @@
+{
+  "name": "mongoose-populate-example",
+  "version": "1.0.0",
+  "description": "Shows the usage of mongoose Schema referencing",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexpchin/mongoose-populate-example.git"
+  },
+  "keywords": [
+    "mongoose",
+    "schema",
+    "reference"
+  ],
+  "author": "Alex CHIN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexpchin/mongoose-populate-example/issues"
+  },
+  "homepage": "https://github.com/alexpchin/mongoose-populate-example",
+  "dependencies": {
+    "mongoose": "^4.1.3"
+  }
+}
