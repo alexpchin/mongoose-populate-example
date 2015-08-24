@@ -1,7 +1,6 @@
 # mongoose-populate-example
 An example of referencing schema in properties and arrays
 
-
 When using a NoSQL database like MongoDb, most of the time you'll have documents that contain all properties by itself. But there are also scenarios where you might encounter the need for a more relational approach and need to reference other documents by the ObjectIds.
 
 This post will show you how to deal with these references using Node.js and the [mongoose ODM][1].
@@ -52,12 +51,12 @@ Now lets create two users:
         name: "Alex"
     });
 
-    var joe = new User({
-        name: "Joe"
+    var gerry = new User({
+        name: "Gerry"
     })
 
     alex.save();
-    joe.save();
+    gerry.save();
 
 The interesting part of course is the creation and even more the query for posts. The post is created with the ObjectId references to the users.
 
@@ -66,7 +65,7 @@ The interesting part of course is the creation and even more the query for posts
         postedBy: alex._id,
         comments: [{
             text: "Nice post!",
-            postedBy: joe._id
+            postedBy: gerry._id
         }, {
             text: "Thanks :)",
             postedBy: alex._id
@@ -126,7 +125,7 @@ In contrast, the query result is a full document containing all User references 
                     "text": "Nice post!",
                     "postedBy": {
                         "_id": "54cd6669d3e0fb1b302e54e5",
-                        "name": "Joe",
+                        "name": "Gerry",
                         "__v": 0
                     },
                     "_id": "54cd6669d3e0fb1b302e54e8"

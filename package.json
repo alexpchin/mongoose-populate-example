@@ -22,6 +22,12 @@
   },
   "homepage": "https://github.com/alexpchin/mongoose-populate-example",
   "dependencies": {
-    "mongoose": "^4.1.3"
+    "body-parser": "^1.13.3",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "express-ejs-layouts": "^1.1.0",
+    "mongoose": "^4.1.3",
+    "morgan": "^1.6.1",
+    "path": "^0.11.14"
   }
 }

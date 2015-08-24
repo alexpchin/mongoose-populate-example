@@ -1,0 +1,17 @@
+<h1>Users</h1>
+<ul>
+  <% if (users) { %>
+    <% for (var i=0; i < users.length; i++) { %>
+      <li>
+        <ul>
+          <li><a href="/users/<%- users[i]._id %>"><%- users[i].name %></a></li>
+          <% for (var y=0; y < users[i].images.length; y++) { %>
+            <li><img src="<%- users[i].images.url %>"></li>
+          <% } %>
+        </ul>
+      </li>
+    <% } %>
+  <% } else { %>
+    <li>There are no users...</li>
+  <% } %>
+</ul>

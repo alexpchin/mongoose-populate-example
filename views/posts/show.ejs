@@ -1,0 +1,13 @@
+<ul>
+  <% if (post) { %>
+  <li><h1><%- post.title %></li>
+    <% if (post._author) { %>
+      <li>By <%- post._author.name %></li>
+    <% } %>
+  <li><%- post.comments.length %> Comment(s)</li>
+      </ul>
+    </li>
+  <% } else { %>
+    <li>There are no posts...</li>
+  <% } %>
+</ul>

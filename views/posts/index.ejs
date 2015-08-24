@@ -1,0 +1,18 @@
+<h1>Posts</h1>
+<ul>
+  <% if (posts) { %>
+    <% for (var i=0; i < posts.length; i++) { %>
+      <li>
+        <ul>
+          <li><a href="/posts/<%- posts[i]._id %>"><%- posts[i].title %></a></li>
+          <% if (posts[i]._author) { %>
+            <li>By <%- posts[i]._author.name %></li>
+          <% } %>
+          <li><%- posts[i].comments.length %> Comment(s)</li>
+        </ul>
+      </li>
+    <% } %>
+  <% } else { %>
+    <li>There are no posts...</li>
+  <% } %>
+</ul>
