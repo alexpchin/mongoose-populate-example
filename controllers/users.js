@@ -24,6 +24,7 @@ function usersShow(req, res){
 
   User.findById({_id: id}, function(err, user){
     // if (err) res.json({message: 'There is not a user with that id.'});
+    console.log(user)
     res.render("users/show", { user: user });
   });
 }

@@ -6,7 +6,7 @@
         <ul>
           <li><a href="/users/<%- users[i]._id %>"><%- users[i].name %></a></li>
           <% for (var y=0; y < users[i].images.length; y++) { %>
-            <li><img src="<%- users[i].images.url %>"></li>
+            <li><img src="<%- users[i].images[y].url %>"></li>
           <% } %>
         </ul>
       </li>

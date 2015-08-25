@@ -69,47 +69,47 @@ alex.save();
 var newdoc = alex.images.create({ url: "http://fillmurray.com/203/203" });
 
 // Creating a new post with some comments
-// var post = new Post({
-//   title: "Hello World",
-//   _author: alex._id,
-//   comments: [
-//     {
-//       text: "Nice post!",
-//       _author: gerry._id
-//     }, {
-//       text: "Thanks :)",
-//       _author: alex._id
-//     }
-//   ]
-// });
+var post = new Post({
+  title: "Hello World",
+  _author: alex._id,
+  comments: [
+    {
+      text: "Nice post!",
+      _author: gerry._id
+    }, {
+      text: "Thanks :)",
+      _author: alex._id
+    }
+  ]
+});
 
-// post.save(function(err) {
-//   if (!err) {
-//     // Display the posts out on the page
-//     Post.find({})
-// // In mongoose >= 3.6, we can pass a space delimited string of path names to populate. Before 3.6 you must execute the populate() method multiple times.
-//     // .populate('_author')
-//     // .populate('comments._author')
-//     .populate('_author comments._author')
-//     .exec(function(err, posts) {
-//       // Stringify to display nested objects instead of: [Object]
-//       // console.log(JSON.stringify(posts, null, "\t"))
-//     })
-//   }
-// });
+post.save(function(err) {
+  if (!err) {
+    // Display the posts out on the page
+    Post.find({})
+// In mongoose >= 3.6, we can pass a space delimited string of path names to populate. Before 3.6 you must execute the populate() method multiple times.
+    // .populate('_author')
+    // .populate('comments._author')
+    .populate('_author comments._author')
+    .exec(function(err, posts) {
+      // Stringify to display nested objects instead of: [Object]
+      // console.log(JSON.stringify(posts, null, "\t"))
+    })
+  }
+});
 
 // Deleting comments when a user is deleted
 // First deleting a user
 // .remove will delete all
-User.remove({ name: gerry.name }, function(err, users){
-  // console.log('Gerry has been deleted.');
-});
+// User.remove({ name: gerry.name }, function(err, users){
+//   console.log('Gerry has been deleted.');
+// });
 
 // Showing remaining users
-User.find({})
-  .exec(function(err, users) {
-    // console.log(JSON.stringify(users, null, "\t"))
-  })
+// User.find({})
+//   .exec(function(err, users) {
+//     console.log(JSON.stringify(users, null, "\t"))
+//   })
 
 // Show posts
 // Post.find({})

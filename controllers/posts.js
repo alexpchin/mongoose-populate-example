@@ -1,4 +1,5 @@
 var Post = require('../models/post');
+var User = require('../models/user');
 
 // INDEX
 function postsIndex(req, res){
@@ -23,13 +24,25 @@ function postsCreate(req,res){
 }
 
 // SHOW
+// - Needs to use populate to display the associated author
+// - Also going to render all users for the comment form dropdown
 function postsShow(req, res){
   var id = req.params.id;
 
-  Post.findById({_id: id}, function(err, post){
-    if (err) res.json({message: 'There is not a post with that id.'});
-    res.render("posts/show", { post: post });
-  });
+  // Could optimize...
+  var users = User.find({}, function(err, users){
+
+    Post.findById({_id: id})
+      .populate('_author')
+      .populate('comments._author')
+      .exec(function(err, post){
+        if (err) res.json({message: 'There is not a post with that id.'});
+        res.render("posts/show", { 
+          post: post,
+          users: users
+        });
+      });
+  })
 }
 
 // NEW

@@ -1,13 +1,38 @@
+<% if (!post) { %>
 <ul>
-  <% if (post) { %>
-  <li><h1><%- post.title %></li>
+  <li>There are no posts...</li>
+</ul>
+<% } else { %>
+<ul>
+  <li><h1><%- post.title %></h1></li>
     <% if (post._author) { %>
-      <li>By <%- post._author.name %></li>
+      <li>By <a href="/users/<%- post._author.id %>"><%- post._author.name %></a></li>
     <% } %>
   <li><%- post.comments.length %> Comment(s)</li>
-      </ul>
-    </li>
-  <% } else { %>
-    <li>There are no posts...</li>
-  <% } %>
 </ul>
+<h2>Comments</h2>
+<form action="/posts/<%- post._id %>/comments" method="post">
+  <select name="comments[_author][_id]">
+    <% for (var u=0; u < users.length; u++) { %>
+      <option value="<%- users[u]._id %>"><%- users[u].name %></option>
+    <% } %>
+  </select>
+  <input type="text" name="comments[text]" placeholder="Comment text...">
+  <input type="submit" value="Submit">
+</form>
+  <% if (post.comments) { %>
+  <ul>
+    <% for (var i=0; i < post.comments.length; i++) { %>
+      <li>
+        <ul>
+          <li><%- post.comments[i].text %></li>
+          <li>By <%- post.comments[i]._author.name %></li>
+          <li><a href="/posts/<%- post._id %>/comments/<%- post.comments[i].id %>">Remove Comment</a></li>
+        </ul>
+      </li>
+    <% } %>
+  </ul>
+  <% } %>
+<% } %>
+
+

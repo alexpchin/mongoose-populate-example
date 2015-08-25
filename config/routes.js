@@ -4,6 +4,7 @@ var express = require('express'),
     router = express.Router();
 
 var postsController = require('../controllers/posts');
+var commentsController = require('../controllers/comments');
 var usersController = require('../controllers/users');
 
 // ## POSTS
@@ -16,8 +17,11 @@ router.route('/posts/new')
 
 router.route('/posts/:id')
   .get(postsController.postsShow)
-  .put(postsController.postsUpdate);
+  .put(postsController.postsUpdate)
+  .delete(postsController.postsDestroy);
 
+router.route('/posts/:id/comments')
+  .post(commentsController.commentsCreate);
 
 // ## USERS
 router.route('/users')
@@ -29,7 +33,8 @@ router.route('/users/new')
 
 router.route('/users/:id')
   .get(usersController.usersShow)
-  .put(usersController.usersUpdate);
+  .put(usersController.usersUpdate)
+  .delete(usersController.usersDestroy);
 
 // ROOT ROUTE
 router.route("/")

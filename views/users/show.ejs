@@ -1,0 +1,10 @@
+<% if (!user) { %>
+  <ul>
+    <li>No user...</li>
+  </ul>
+<% } else { %>
+  <h1><%- user.name %></h1>
+  <% for (var y=0; y < user.images.length; y++) { %>
+    <li><img src="<%- user.images[y].url %>"></li>
+  <% } %>
+<% } %>
