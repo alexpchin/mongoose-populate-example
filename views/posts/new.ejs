@@ -1,5 +1,10 @@
 <h1>New Post</h1>
 <form action="/posts" method="post">
   <input type="text" name="title" placeholder="Title">
+  <select name="_author[_id]">
+    <% for (var u=0; u < users.length; u++) { %>
+      <option value="<%- users[u]._id %>"><%- users[u].name %></option>
+    <% } %>
+  </select>
   <input type="submit" value="Submit">
 </form>

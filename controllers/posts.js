@@ -18,8 +18,9 @@ function postsIndex(req, res){
 function postsCreate(req,res){
   var post = new Post(req.body);
   post.save(function(err){
-    if (err) res.json({message: "Creating a post failed."});
-    res.json({post: post});
+    // if (err) res.json({message: "Creating a post failed."});
+    // res.json({post: post});
+    res.redirect("/posts")
   });
 }
 
@@ -30,7 +31,7 @@ function postsShow(req, res){
   var id = req.params.id;
 
   // Could optimize...
-  var users = User.find({}, function(err, users){
+  User.find({}, function(err, users){
 
     Post.findById({_id: id})
       .populate('_author')
@@ -47,7 +48,9 @@ function postsShow(req, res){
 
 // NEW
 function postsNew(req, res){
-  res.render("posts/new");
+  User.find({}, function(err, users){
+    res.render("posts/new", { users: users });
+  });
 }
 
 // UPDATE

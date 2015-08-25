@@ -9,6 +9,7 @@
             <li>By <%- posts[i]._author.name %></li>
           <% } %>
           <li><%- posts[i].comments.length %> Comment(s)</li>
+          <li><a href="/posts/<%- posts[i]._id %>">Remove</a></li>
         </ul>
       </li>
     <% } %>
